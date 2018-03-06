@@ -1,6 +1,9 @@
-# Funcional e Orientada a Objetos
-# Aula 3
-# Gerson Vasconcelos
+################################################
+# CENTRO UNIVERSITÁRIO METODISTA IZABELA HENDRIX
+# PROGRAMAÇÃO FUNCIONAL ORIENTADA A OBJETOS
+# Aula 01
+# por Layla Comparin
+################################################
 
 ######
 
