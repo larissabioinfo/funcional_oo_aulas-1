@@ -1,7 +1,7 @@
 ################################################
 # CENTRO UNIVERSITÁRIO METODISTA IZABELA HENDRIX
 # PROGRAMAÇÃO FUNCIONAL ORIENTADA A OBJETOS
-# Aula 01
+# Aula 03
 # por Layla Comparin
 ################################################
 
