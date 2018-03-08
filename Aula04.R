@@ -19,7 +19,7 @@ head(iris) # Retorna os primeiros casos
 tail(iris) # Retorna os ultimos casos
 
 # Estatisticas descritivas com o pacote descr
-install.packages("descr") # Instala o pacote (uma só vez)
+install.packages("descr") # Pacote para leitura de estatisticas descritivas
 library(descr) # Carrega o pacote 
 
 # Quero ver as 10 primeiras linhas:
