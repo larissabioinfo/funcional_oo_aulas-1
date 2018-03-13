@@ -1,0 +1,108 @@
+---
+title: "PROGRAMAÇÃO FUNCIONAL ORIENTADA A OBJETOS"
+subtitle: "Aula 05"
+data: "12 de março de 2018"
+output: html_notebook
+---
+
+Este é o meu primeiro documento **RNotebook**. Uma excelente ferramenta para relatórios de *DataScience*.
+
+#Introdução
+
+Vamos criar um vetor numérico, um vetor de inteiros, um vetor de string (texto).
+
+Ctrl + alt + I - Cria o *Chunk* abaixo:
+
+```{r}
+
+```
+
+```{r}
+# Vetor numérico assume casas decimais
+x <- c(5,3.4,6.2,7)
+x
+class(x)
+
+idades <- c(29L, 30L, 31L, 32L)
+class(idades)
+
+nomes <- c("Gerson", "Edézio", "Layla")
+nomes
+class(nomes)
+
+```
+
+Agora vamos criar um banco de dados `data.frame`. Para isso, vamos criar um vetor de nomes, outro de idades, e outro de time de futebol.
+
+```{r}
+
+bd = data.frame(nomes = c("Edésio", "Gerson", "Adelvan", "Layla"),        
+                idades = c(24L, 25L, 23L, 24L),
+                times = c("Cruzeiro", "Sport", "Atletico", NA),
+                stringsAsFactors = F) ## <-  Tira a opção de variável categórica.
+
+bd
+```
+
+Agora vamos investigar o nosso banco de dados:
+
+```{r}
+dim(bd) # Dimensões do banco
+names(bd) # Nomes das variáveis
+str(bd) # Estrutura do banco
+
+bd$times <- as.factor(bd$times)
+
+str(bd)
+
+```
+
+# Trabalhando com o Enade:
+
+Estamos estudando o banco de dados do Enade. O Enade é um dos procedimentos de avaliação do Sistema Nacional de Avaliação da Educação Superior (Sinaes). O Enade é realizado pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep). O Enade, não avalia o desempenho do aluno, mas confere a qualidade dos cursos e o rendimento de seus alunos em relação aos conteúdos programáticos, suas habilidades e competências.
+
+Para fins práticos, vamos trabalhar com uma amostra aleatória previamente preparada para esta aula. Esta amostra está alocada no GitHub e nós podemos carregá-la no R direto da Internet.
+
+```{r}
+
+install.packages("readr")
+library(readr) # Carrega o pacote 
+
+
+enade14 <- read_csv2("https://raw.githubusercontent.com/neylsoncrepalde/introducao_ao_r/master/dados/enade_2014_amostra.csv")
+
+names(enade14)
+
+hist(enade14$nt_ger, col="green", main = "Histograma da nota geral do Enade")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
