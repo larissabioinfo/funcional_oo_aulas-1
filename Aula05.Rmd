@@ -1,0 +1,26 @@
+---
+title: "PROGRAMAÇÃO FUNCIONAL ORIENTADA A OBJETOS"
+subtitle: "Aula 05"
+data: "12 de março de 2018"
+output: html_notebook
+---
+
+Este é o meu primeiro documento **RNotebook**. Uma excelente ferramenta para relatórios de *DataScience*.
+
+#Introdução
+
+Vamos criar um vetor numérico, um vetor de inteiros, um vetor de string (texto).
+
+Ctrl + alt + I - Cria o *Chunk* abaixo:
+
+```{r}
+
+```
+
+```{r}
+# Vetor numérico assume casas decimais
+x <- c(5,3.4,6.2,7)
+x
+```
+
+
