@@ -62,7 +62,7 @@ freq(enade14$qe_i2, col="purple")
 # Renda
 freq(enade14$qe_i8, col="lightblue")
 enade14$qe_i8[enade14$qe_i8 == "g"] <- "Baixa"
-
+  
 # Escolaridade da mãe
 freq(enade14$qe_i5)
 freq(enade14$qe_i4)
@@ -72,4 +72,12 @@ freq(enade14$qe_i4)
 # Muito cuidade. O teste t de student só funciona para DUAS MÉDIAS
 t.test(enade14$nt_ger ~ enade14$tp_sexo)
 
+########## Criando a variável dummy (binária) branco
+freq(enade14$qe_i2)
+enade14$branco <- ifelse(enade14$qe_i2 == "a", 1, 0)
+freq(enade14$branco, col = "lightpink", main = "True or False | Binarie")
+class(enade14$branco)
+
+# Testando
+t.test(enade14$nt_ger ~ enade14$branco)
 
