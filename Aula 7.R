@@ -88,3 +88,17 @@ class(enade14$branco)
 # Testando
 t.test(enade14$nt_ger ~ enade14$branco)
 
+#Tabela cruzada (Mostra o resultado de duas variáveis categóricas) - "Factors"
+cor_sexo <-  table(enade14$cor_raca, enade14$sexo)
+
+#Escolaridade da mãe com a cor:
+cor_escmae <- table(enade14$cor_raca, enade14$qe_i5)
+
+
+
+###### Apagar tudo no console
+Ctrl + l
+rm(list=ls())
+
+
+
