@@ -24,6 +24,13 @@ freq(enade14$tp_sexo, col="yellow", main = "Sexo")
 
 # Cor/Raça
 freq(enade14$qe_i5, col="red", main = "Cor/Raça")
+enade14$cor_raca <-  enade14$qe_i2
+enade14$cor_raca[enade14$cor_raca == "a"] <- "Branco"
+enade14$cor_raca[enade14$cor_raca == "b"] <- "Negros"
+enade14$cor_raca[enade14$cor_raca == "c"] <- "Pardos"
+enade14$cor_raca[enade14$cor_raca == "d"] <- "Amarelo"
+enade14$cor_raca[enade14$cor_raca == "e"] <- "Indigena"
+freq(enade14$cor_raca, col="purple")
 
 # Idade
 freq(enade14$nu_idade, col="blue", main = "Idade")
