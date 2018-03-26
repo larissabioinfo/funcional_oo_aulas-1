@@ -55,15 +55,15 @@ n <- 50
 
 fib <- numeric(n)
 
-fib[1] <- 0
+fib[1] <- 1
 fib[2] <- 1
 
 for(i in 3:n){
   fib[i] <- fib[i - 1] + fib[i - 2]
 }
+# Fn = Fn - 1 + Fn - 2
 
 fib
-
 
 
 
