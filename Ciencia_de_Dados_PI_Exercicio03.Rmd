@@ -1,0 +1,188 @@
+---
+title: "PROJETO INTEGRADOR - Exerc√≠cio 3"
+data: "26 de mar√ßo de 2018"
+output: html_notebook
+---
+
+```{r}
+install.packages("readr")
+install.packages("dplyr")
+install.packages("descr")
+library(readr)# Carrega o pacote 
+library(dplyr) # Carrega o pacote
+library(descr) # Carrega o pacote 
+
+enade14 <- read_csv2("https://raw.githubusercontent.com/neylsoncrepalde/introducao_ao_r/master/dados/enade_2014_amostra.csv")
+
+```
+
+Mostre com um comando e usando um gr·fico a distribuiÁ„o das idades dessa amostra de alunos que fizeram ENADE em 2014. Comente o resultado.
+
+R: A quantidade de pessoas com idades entre 20 e 30 anos √© maior do que o restante.
+
+```{r}
+hist(enade14$nu_idade, 
+     col="#FF0088", 
+     main = "Histograma de distribuiÁ„o de idades - ENADE 2014",
+     xlab = "Idades",
+     ylab = "FrequÍncia")
+
+```
+
+Monte uma tabela exibindo as porcentagens e os valores absolutos das proporÁıes de alunos por COR/RA«A. O descobrimos sobre isso?
+
+R: A porcentagem de pessoas brancas que fizeram o ENADE est· imensamente superior as outras raÁas. 
+
+```{r}
+
+cor_raca <-  enade14$qe_i2
+cor_raca[cor_raca == "a"] <- "Brancos"
+cor_raca[cor_raca == "b"] <- "Negros"
+cor_raca[cor_raca == "c"] <- "Pardos"
+cor_raca[cor_raca == "d"] <- "Amarelos"
+cor_raca[cor_raca == "e"] <- "Indigenas"
+freq(cor_raca[!is.na(cor_raca)], 
+     col="#FF0088", 
+     main = "Cor/RaÁa")
+
+```
+
+Apresente a proporÁ„o de alunos casados e solteiros. AtenÁ„o, queremos apenas CASADOS e SOLTEIROS. Exclua de sua an·lise os alunos que tiverem outro tipo de estado civil.
+
+```{r}
+
+estado_civil <-  enade14$qe_i1
+estado_civil[estado_civil == "d"] <- NA
+estado_civil[estado_civil == "e"] <- NA
+estado_civil[estado_civil == "c"] <- NA
+estado_civil[estado_civil == "a"] <- "Solteiro(a)"
+estado_civil[estado_civil == "b"] <- "Casado(a)"
+freq(estado_civil[!is.na(estado_civil)], 
+     col="#FF0088", 
+     main = "Estado Civil")
+
+```
+
+Apresente estatÌsticas descritivas sobre a nota geral dos alunos no Enade. Apresente tambÈm a informaÁ„o em um gr·fico. Qual È o gr·fico mais adequado para a visualizaÁ„o desta vari·vel? Por quÍ? Comente sobre a nota geral. Os alunos parecem ter, no geral, um bom desempenho ou um mal desempenho?
+
+R: O gr·fico mais adequado para a utilizaÁ„o È um boxplot, pois exibe distribuiÁ„o, dispers„o e assimetria atravÈs da visualizaÁ„o dos quartis. AtravÈs da an·lise do gr·fico e das estatÌsticas descritivas podemos afirmar que no geral os alunos do Enade 2014 tiveram um desempenho mÈdio muito insatisfatÛrio visto que a mÈdia geral da nota dos alunos n„o chega nem a 50% de acerto do total da prova.
+
+```{r}
+summary(enade14$nt_ger)
+boxplot(enade14$nt_ger, 
+        col = "#FF0088",
+        main = "Boxplot da nota geral - Enade 2014", 
+        ylab = "Notas")
+
+```
+
+Crie uma vari·vel bin·ria chamada PUBLICA. Nessa vari·vel, vocÍ deve marcar 1 se a universidade em que o aluno estudou foi p˙blica e 0 se foi privada. ATEN«√O: existe uma vari·vel com a categoria administrativa da IES mas ela possui v·rias subclassificaÁıes. … preciso que vocÍ crie outra vari·vel com as categorias corretas.
+
+```{r}
+
+PUBLICA = ifelse(enade14$co_catad == 118 |
+                   enade14$co_catad == 121 |
+                   enade14$co_catad == 10004 |
+                   enade14$co_catad == 10005 |
+                   enade14$co_catad == 10006 |
+                   enade14$co_catad == 10007 |
+                   enade14$co_catad == 10008 |
+                   enade14$co_catad == 10009, 0, 1)
+
+PUBLICA[PUBLICA == "0"] <- "IES/Privada"
+PUBLICA[PUBLICA == "1"] <- "IES/Publica"
+
+freq(PUBLICA, 
+     col="#FF0088",
+     main = "ProporÁ„o IES/Privada e IES/Publica")
+
+```
+
+Mostre a distribuiÁ„o da renda para os alunos do ENADE 2014. Mostre tambÈm a distribuiÁ„o de renda apenas para os alunos das escolas p˙blicas e das escolas privadas.
+
+Renda de todos os alunos:
+
+```{r}
+barplot(table(renda), col ="#FF0088",
+        main = "Renda dos alunos - Enade 2014",
+        xlab = "Renda dos alunos (em sal·rios mÌnimos)",
+        ylab = "FrequÍncia")
+```
+
+Renda dos alunos da IES Publica:
+
+```{r}
+publi <- enade14$qe_i17 == "a"
+publi <- publi[!is.na(publi)]
+
+barplot(table(renda[publi]), col ="#FF0088",
+        main = "Renda dos alunos de escolas p˙blicas - Enade 2014",
+        xlab = "Renda dos alunos (em sal·rios mÌnimos)",
+        ylab = "FrequÍncia")
+```
+
+Renda dos alunos da IES Privada:
+
+```{r}
+priv <- enade14$qe_i17 == "b"
+priv <- priv[!is.na(priv)]
+
+barplot(table(renda[priv]), col ="#FF0088",
+        main = "Renda dos alunos de escolas privadas - Enade 2014",
+        xlab = "Renda dos alunos (em sal·rios mÌnimos)",
+        ylab = "FrequÍncia")
+```
+
+Mostre agora a nota geral dos alunos das faculdades p˙blicas e dos alunos das faculdades privadas. O que vocÍ acha desses dados?
+
+```{r}
+hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
+
+```
+
+B√îNUS: Existe um teste estat√≠stico para verificar se a m√©dia da nota geral desta amostra dos alunos que fizeram ENADE pode ser inferida para toda a popula√ß√£o? Fa√ßa o teste e apresente os resultados. Qual √© o intervalo de confian√ßa do teste?
+
+```{r}
+hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
+
+```
+
+B√îNUS: Existe um teste estat√≠stico para verificar se a diferen√ßa entre as notas dos alunos das universidades p√∫blicas e dos alunos das universidades privadas √© estatisticamente significante? Fa√ßa o teste e apresente os resultados.
+
+```{r}
+hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
