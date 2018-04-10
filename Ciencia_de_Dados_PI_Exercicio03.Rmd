@@ -1,6 +1,6 @@
 ---
-title: "PROJETO INTEGRADOR - ExercÃ­cio 3"
-data: "26 de marÃ§o de 2018"
+title: "PROJETO INTEGRADOR - ExercÃƒÂ­cio 3"
+data: "26 de marÃƒÂ§o de 2018"
 output: html_notebook
 ---
 
@@ -8,6 +8,7 @@ output: html_notebook
 install.packages("readr")
 install.packages("dplyr")
 install.packages("descr")
+install.packages("curl")
 library(readr)# Carrega o pacote 
 library(dplyr) # Carrega o pacote
 library(descr) # Carrega o pacote 
@@ -16,22 +17,22 @@ enade14 <- read_csv2("https://raw.githubusercontent.com/neylsoncrepalde/introduc
 
 ```
 
-Mostre com um comando e usando um gráfico a distribuição das idades dessa amostra de alunos que fizeram ENADE em 2014. Comente o resultado.
+Mostre com um comando e usando um grÃ¡fico a distribuiÃ§Ã£o das idades dessa amostra de alunos que fizeram ENADE em 2014. Comente o resultado.
 
-R: A quantidade de pessoas com idades entre 20 e 30 anos Ã© maior do que o restante.
+R: A quantidade de pessoas com idades entre 20 e 30 anos ÃƒÂ© maior do que o restante.
 
 ```{r}
 hist(enade14$nu_idade, 
      col="#FF0088", 
-     main = "Histograma de distribuição de idades - ENADE 2014",
+     main = "Histograma de distribuiÃ§Ã£o de idades - ENADE 2014",
      xlab = "Idades",
-     ylab = "Frequência")
+     ylab = "FrequÃªncia")
 
 ```
 
-Monte uma tabela exibindo as porcentagens e os valores absolutos das proporções de alunos por COR/RAÇA. O descobrimos sobre isso?
+Monte uma tabela exibindo as porcentagens e os valores absolutos das proporÃ§Ãµes de alunos por COR/RAÃ‡A. O descobrimos sobre isso?
 
-R: A porcentagem de pessoas brancas que fizeram o ENADE está imensamente superior as outras raças. 
+R: A porcentagem de pessoas brancas que fizeram o ENADE estÃ¡ imensamente superior as outras raÃ§as. 
 
 ```{r}
 
@@ -43,11 +44,11 @@ cor_raca[cor_raca == "d"] <- "Amarelos"
 cor_raca[cor_raca == "e"] <- "Indigenas"
 freq(cor_raca[!is.na(cor_raca)], 
      col="#FF0088", 
-     main = "Cor/Raça")
+     main = "Cor/RaÃ§a")
 
 ```
 
-Apresente a proporção de alunos casados e solteiros. Atenção, queremos apenas CASADOS e SOLTEIROS. Exclua de sua análise os alunos que tiverem outro tipo de estado civil.
+Apresente a proporÃ§Ã£o de alunos casados e solteiros. AtenÃ§Ã£o, queremos apenas CASADOS e SOLTEIROS. Exclua de sua anÃ¡lise os alunos que tiverem outro tipo de estado civil.
 
 ```{r}
 
@@ -63,9 +64,9 @@ freq(estado_civil[!is.na(estado_civil)],
 
 ```
 
-Apresente estatísticas descritivas sobre a nota geral dos alunos no Enade. Apresente também a informação em um gráfico. Qual é o gráfico mais adequado para a visualização desta variável? Por quê? Comente sobre a nota geral. Os alunos parecem ter, no geral, um bom desempenho ou um mal desempenho?
+Apresente estatÃ­sticas descritivas sobre a nota geral dos alunos no Enade. Apresente tambÃ©m a informaÃ§Ã£o em um grÃ¡fico. Qual Ã© o grÃ¡fico mais adequado para a visualizaÃ§Ã£o desta variÃ¡vel? Por quÃª? Comente sobre a nota geral. Os alunos parecem ter, no geral, um bom desempenho ou um mal desempenho?
 
-R: O gráfico mais adequado para a utilização é um boxplot, pois exibe distribuição, dispersão e assimetria através da visualização dos quartis. Através da análise do gráfico e das estatísticas descritivas podemos afirmar que no geral os alunos do Enade 2014 tiveram um desempenho médio muito insatisfatório visto que a média geral da nota dos alunos não chega nem a 50% de acerto do total da prova.
+R: O grÃ¡fico mais adequado para a utilizaÃ§Ã£o Ã© um boxplot, pois exibe distribuiÃ§Ã£o, dispersÃ£o e assimetria atravÃ©s da visualizaÃ§Ã£o dos quartis. AtravÃ©s da anÃ¡lise do grÃ¡fico e das estatÃ­sticas descritivas podemos afirmar que no geral os alunos do Enade 2014 tiveram um desempenho mÃ©dio muito insatisfatÃ³rio visto que a mÃ©dia geral da nota dos alunos nÃ£o chega nem a 50% de acerto do total da prova.
 
 ```{r}
 summary(enade14$nt_ger)
@@ -76,7 +77,7 @@ boxplot(enade14$nt_ger,
 
 ```
 
-Crie uma variável binária chamada PUBLICA. Nessa variável, você deve marcar 1 se a universidade em que o aluno estudou foi pública e 0 se foi privada. ATENÇÃO: existe uma variável com a categoria administrativa da IES mas ela possui várias subclassificações. É preciso que você crie outra variável com as categorias corretas.
+Crie uma variÃ¡vel binÃ¡ria chamada PUBLICA. Nessa variÃ¡vel, vocÃª deve marcar 1 se a universidade em que o aluno estudou foi pÃºblica e 0 se foi privada. ATENÃ‡ÃƒO: existe uma variÃ¡vel com a categoria administrativa da IES mas ela possui vÃ¡rias subclassificaÃ§Ãµes. Ã‰ preciso que vocÃª crie outra variÃ¡vel com as categorias corretas.
 
 ```{r}
 
@@ -94,19 +95,19 @@ PUBLICA[PUBLICA == "1"] <- "IES/Publica"
 
 freq(PUBLICA, 
      col="#FF0088",
-     main = "Proporção IES/Privada e IES/Publica")
+     main = "ProporÃ§Ã£o IES/Privada e IES/Publica")
 
 ```
 
-Mostre a distribuição da renda para os alunos do ENADE 2014. Mostre também a distribuição de renda apenas para os alunos das escolas públicas e das escolas privadas.
+Mostre a distribuiÃ§Ã£o da renda para os alunos do ENADE 2014. Mostre tambÃ©m a distribuiÃ§Ã£o de renda apenas para os alunos das escolas pÃºblicas e das escolas privadas.
 
 Renda de todos os alunos:
 
 ```{r}
 barplot(table(renda), col ="#FF0088",
         main = "Renda dos alunos - Enade 2014",
-        xlab = "Renda dos alunos (em salários mínimos)",
-        ylab = "Frequência")
+        xlab = "Renda dos alunos (em salÃ¡rios mÃ­nimos)",
+        ylab = "FrequÃªncia")
 ```
 
 Renda dos alunos da IES Publica:
@@ -116,9 +117,9 @@ publi <- enade14$qe_i17 == "a"
 publi <- publi[!is.na(publi)]
 
 barplot(table(renda[publi]), col ="#FF0088",
-        main = "Renda dos alunos de escolas públicas - Enade 2014",
-        xlab = "Renda dos alunos (em salários mínimos)",
-        ylab = "Frequência")
+        main = "Renda dos alunos de escolas pÃºblicas - Enade 2014",
+        xlab = "Renda dos alunos (em salÃ¡rios mÃ­nimos)",
+        ylab = "FrequÃªncia")
 ```
 
 Renda dos alunos da IES Privada:
@@ -129,25 +130,25 @@ priv <- priv[!is.na(priv)]
 
 barplot(table(renda[priv]), col ="#FF0088",
         main = "Renda dos alunos de escolas privadas - Enade 2014",
-        xlab = "Renda dos alunos (em salários mínimos)",
-        ylab = "Frequência")
+        xlab = "Renda dos alunos (em salÃ¡rios mÃ­nimos)",
+        ylab = "FrequÃªncia")
 ```
 
-Mostre agora a nota geral dos alunos das faculdades públicas e dos alunos das faculdades privadas. O que você acha desses dados?
+Mostre agora a nota geral dos alunos das faculdades pÃºblicas e dos alunos das faculdades privadas. O que vocÃª acha desses dados?
 
 ```{r}
 hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
 
 ```
 
-BÃ”NUS: Existe um teste estatÃ­stico para verificar se a mÃ©dia da nota geral desta amostra dos alunos que fizeram ENADE pode ser inferida para toda a populaÃ§Ã£o? FaÃ§a o teste e apresente os resultados. Qual Ã© o intervalo de confianÃ§a do teste?
+BÃƒâ€NUS: Existe um teste estatÃƒÂ­stico para verificar se a mÃƒÂ©dia da nota geral desta amostra dos alunos que fizeram ENADE pode ser inferida para toda a populaÃƒÂ§ÃƒÂ£o? FaÃƒÂ§a o teste e apresente os resultados. Qual ÃƒÂ© o intervalo de confianÃƒÂ§a do teste?
 
 ```{r}
 hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
 
 ```
 
-BÃ”NUS: Existe um teste estatÃ­stico para verificar se a diferenÃ§a entre as notas dos alunos das universidades pÃºblicas e dos alunos das universidades privadas Ã© estatisticamente significante? FaÃ§a o teste e apresente os resultados.
+BÃƒâ€NUS: Existe um teste estatÃƒÂ­stico para verificar se a diferenÃƒÂ§a entre as notas dos alunos das universidades pÃƒÂºblicas e dos alunos das universidades privadas ÃƒÂ© estatisticamente significante? FaÃƒÂ§a o teste e apresente os resultados.
 
 ```{r}
 hist(enade14$nu_idade, col="red", main = "Histograma das Idades Registradas no Enade")
