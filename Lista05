@@ -44,6 +44,15 @@ while (i < 101){
     ##  [9,]    8    7    6    5    4    3    2    1    0    -1
     ## [10,]    9    8    7    6    5    4    3    2    1     0
 
+A = matrix(0, nrow=10, ncol = 10)
+
+for(i in 0:nrow(A)){
+  for(j in 0:ncol(A)){
+    A[i,j]= i-j
+  }
+}
+A
+
 5.  Crie uma matriz vazia de tamanho 10 X 10. Usando for loops, preencha a matriz de modo que ela fique assim:
 
 <!-- -->
@@ -59,8 +68,26 @@ while (i < 101){
     ##  [8,]    9   10   11   12   13   14   15   16   17    18
     ##  [9,]   10   11   12   13   14   15   16   17   18    19
     ## [10,]   11   12   13   14   15   16   17   18   19    20
+    
+    A = matrix(0, nrow=10, ncol = 10)
+
+for(i in 0:nrow(A)){
+  for(j in 0:ncol(A)){
+    A[i,j]= i+j
+  }
+}
+A
 
 6.  Crie uma matriz vazia de tamanho 10 X 10. Usando for loops, preencha a matriz de modo que ela fique assim:
+
+A = matrix(0, nrow=10, ncol = 10)
+
+for(i in 0:nrow(A)){
+  for(j in 0:ncol(A)){
+    A[i,j]= ((i+j)^2)
+  }
+}
+A
 
 <!-- -->
 
