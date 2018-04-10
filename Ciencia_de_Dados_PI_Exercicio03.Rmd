@@ -62,6 +62,12 @@ freq(estado_civil[!is.na(estado_civil)],
      col="#FF0088", 
      main = "Estado Civil")
 
+enade14.2 = enade14 %>% mutate(est_civil = qe_i1) %>%
+  filter(est_civil == 'a' | est_civil == 'b')
+freq(enade14.2$est_civil, 
+     col="#FF0088", 
+     main = "Estado Civil")
+
 ```
 
 Apresente estatísticas descritivas sobre a nota geral dos alunos no Enade. Apresente também a informação em um gráfico. Qual é o gráfico mais adequado para a visualização desta variável? Por quê? Comente sobre a nota geral. Os alunos parecem ter, no geral, um bom desempenho ou um mal desempenho?
@@ -89,6 +95,30 @@ PUBLICA = ifelse(enade14$co_catad == 118 |
                    enade14$co_catad == 10007 |
                    enade14$co_catad == 10008 |
                    enade14$co_catad == 10009, 0, 1)
+
+PUBLICA[PUBLICA == "0"] <- "IES/Privada"
+PUBLICA[PUBLICA == "1"] <- "IES/Publica"
+
+freq(PUBLICA, 
+     col="#FF0088",
+     main = "Proporção IES/Privada e IES/Publica")
+     
+     ## OUTRA FORMA DE FAZER:
+PUBLICA <- enade14$co_catad
+
+PUBLICA[PUBLICA == 93] = 1
+PUBLICA[PUBLICA == 116] = 1
+PUBLICA[PUBLICA == 118] = 0
+PUBLICA[PUBLICA == 121] = 0
+PUBLICA[PUBLICA == 10001] = 1
+PUBLICA[PUBLICA == 10002] = 1
+PUBLICA[PUBLICA == 10003] = 1
+PUBLICA[PUBLICA == 10004] = 0
+PUBLICA[PUBLICA == 10005] = 0
+PUBLICA[PUBLICA == 10006] = 0
+PUBLICA[PUBLICA == 10007] = 0
+PUBLICA[PUBLICA == 10008] = 0
+PUBLICA[PUBLICA == 10009] = 0
 
 PUBLICA[PUBLICA == "0"] <- "IES/Privada"
 PUBLICA[PUBLICA == "1"] <- "IES/Publica"
