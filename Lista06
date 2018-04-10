@@ -38,5 +38,20 @@ Desafio
 
 6.  Reescreva a sua função de estatísticas descritivas. Não utilize as funções prontas do `R` mas implemente a média, a variância e o desvio padrão (mediana não) a partir de suas fórmulas.
 
+estat_desc <- function(x, na.rm = F) {
+    if (na.rm == T){                      
+    x = x[!is.na(x)]   
+    }
+  med = sum(x) / length(x)
+  desv_qua = (x - med)^2
+  vari = sum(desv_qua)/(length(x) - 1)
+  dv_pd = vari^(1/2)
+  print(paste("Média =", med))
+  print(paste("Variância =", vari))
+  print(paste("Desvio Padrão =", dv_pd))
+}
+
+estat_desc(iris$Sepal.Length)
+
 Divirta-se!
 ===========
