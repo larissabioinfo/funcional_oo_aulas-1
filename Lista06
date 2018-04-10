@@ -16,6 +16,7 @@ Olá. Este é o sexto exercício de nosso **Projeto Integrador**, o último rela
   mat = matrix(data = c(med, mediana, variancia, desv),
                       nrow = 1)
 
+  colnames(mat) = c('Média', 'Mediana', 'Variância', 'Desvio Padrão')
   return(mat)
   
 }
@@ -27,6 +28,8 @@ Olá. Este é o sexto exercício de nosso **Projeto Integrador**, o último rela
 3.  Reescreva sua função de modo que ela aceite apenas vetores do typo `integer` ou `numeric`. Se o usuário tentar passar um vetor de outro tipo, a função deve exibir um ERRO e uma mensagem com a orientação: "Object is not integer or numeric". *Dica*: use o comando `stop("mensagem")`. Teste a função com uma variável numérica, uma variável integer e um objeto de outro tipo qualquer.
 
 4.  Agora, use a função `sapply` para executar sua função para todas as variáveis numéricas do banco de dados `iris`. Execute-a também para as variáveis *idade*, *nota geral*, *nota da formação geral* e *nota do componente específico* do banco de dados `enade`.
+
+sapply(iris[1:4], funcion)
 
 5.  Sabemos que as variáveis do questionário do estudante do ENADE relacionadas à IES possuem duas categorias que não são úteis para nossa análise, 7 e 8 (Não sei, não se aplica). Essas categorias precisam ser substituídas por `NA's`. Faça a substituição usando uma função programada por você e a função sapply.
 
