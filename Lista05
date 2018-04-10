@@ -8,7 +8,7 @@ Olá, pessoal. Este é a quinta bateria de atividades do projeto integrador dos 
 1.  Para um vetor de 1 até 100, apresente o resultado final para as seguintes operações: adicionar a raiz quadrada do exponencial e dividir pela média do vetor.
 
 for(i in 1:100){
-x=sqrt(exp(i))
+x=i + sqrt(exp(i))
 y=x/mean(1:100)
 print(y)
 }
