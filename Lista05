@@ -7,6 +7,12 @@ Olá, pessoal. Este é a quinta bateria de atividades do projeto integrador dos 
 
 1.  Para um vetor de 1 até 100, apresente o resultado final para as seguintes operações: adicionar a raiz quadrada do exponencial e dividir pela média do vetor.
 
+for(i in 1:100){
+x=sqrt(exp(i))
+y=x/mean(1:100)
+print(y)
+}
+
 2.  Para um vetor de 1 até 100, se o número for menor do que 20, exiba na tela pequeno. Se o número estiver entre 21 e 40, exiba médio. Se estiver entre 41 e 80, exiba grande. Se for igual a 100, exiba a palavra `frango`. Quando o número da vez for a sua idade, exiba `Achei você!`. Execute esta tarefa usando um loop `for`. (Obs.: Não use um número mágico para representar sua idade. Guarde-a num objeto chamado `minha_idade`.)
 
 3.  Execute a mesma tarefa anterior usando um loop `while`.
